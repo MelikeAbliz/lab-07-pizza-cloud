@@ -20,8 +20,6 @@ public class PizzaRepository {
     public List<Pizza> readAll() {
         return pizzaList;
     }
-
-    // TODO complete method
     public Pizza findPizzaById(UUID uuid) {
         return readAll().stream().filter(p->p.getId().equals(uuid))
                 .findFirst().orElseThrow(()->new PizzaNotFoundException("pizza not found"));

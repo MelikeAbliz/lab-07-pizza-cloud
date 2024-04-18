@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-    @GetMapping({"/", "/home"}) // localhost:8080 localhost:8080/ localhost:8080/home
+    @GetMapping({"/", "/home"})
     public String getHomePage(){
         return "/home";
     }

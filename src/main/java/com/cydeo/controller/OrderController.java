@@ -23,8 +23,6 @@ public class OrderController {
     public String orderForm(@RequestParam UUID pizzaId, Model model) {
 
         PizzaOrder pizzaOrder = new PizzaOrder();
-
-        // TODO fix the getPizza() method below in line 46.
         pizzaOrder.setPizza(getPizza(pizzaId));
 
         model.addAttribute("pizzaOrder", pizzaOrder);
@@ -35,16 +33,13 @@ public class OrderController {
     @PostMapping("/{pizzaId}")
     public String processOrder(@PathVariable UUID pizzaId, @ModelAttribute PizzaOrder pizzaOrder) {
 
-        // Saving the order
         pizzaOrder.setPizza(getPizza(pizzaId));
-        System.out.println("Order is successfully saved");
+        System.out.println("Order is successfully saved");// Saved the order
 
         return "redirect:/home";
     }
 
-    //TODO complete method
     private Pizza getPizza(UUID pizzaId) {
-        // Get the pizza from repository based on it's id
         return pizzaRepository.findPizzaById(pizzaId);
     }
 
