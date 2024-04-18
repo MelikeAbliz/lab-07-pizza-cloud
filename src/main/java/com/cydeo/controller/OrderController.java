@@ -20,7 +20,7 @@ public class OrderController {
     }
 
     @GetMapping("/current")
-    public String orderForm(UUID pizzaId, Model model) {
+    public String orderForm(@RequestParam UUID pizzaId, Model model) {
 
         PizzaOrder pizzaOrder = new PizzaOrder();
 
@@ -33,7 +33,7 @@ public class OrderController {
     }
 
     @PostMapping("/{pizzaId}")
-    public String processOrder(UUID pizzaId, @ModelAttribute PizzaOrder pizzaOrder) {
+    public String processOrder(@PathVariable UUID pizzaId, @ModelAttribute PizzaOrder pizzaOrder) {
 
         // Saving the order
         pizzaOrder.setPizza(getPizza(pizzaId));
@@ -45,7 +45,7 @@ public class OrderController {
     //TODO complete method
     private Pizza getPizza(UUID pizzaId) {
         // Get the pizza from repository based on it's id
-        return new Pizza();
+        return pizzaRepository.findPizzaById(pizzaId);
     }
 
 }
